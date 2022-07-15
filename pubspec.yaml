@@ -1,0 +1,72 @@
+name: alfatech
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.0 <3.0.0"
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^1.0.5
+  flutter_awesome_buttons: ^1.1.0
+  animated_text_kit: ^4.2.2
+  share: ^2.0.4
+  firebase_core: ^1.19.1
+  firebase_auth: ^3.4.1
+  cloud_firestore: ^3.2.1
+  flutter_progress_hud: ^2.0.2
+  flutter_spinkit: ^5.1.0
+  image_picker: ^0.8.5+3
+  firebase_storage: ^10.3.1
+  flutterwave: ^1.0.3
+  flutterwave_standard: ^1.0.4
+  http: ^0.13.4
+  flutter_paytabs_bridge: ^2.2.8
+  sqflite: ^2.0.3
+  path: ^1.8.1
+
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+
+  flutter_lints: ^2.0.1
+  get: ^4.6.5
+  google_sign_in: ^5.4.0
+  firebase_core: ^1.18.0
+  firebase_auth: ^3.3.20
+  flutter_login_facebook: ^1.5.0+1
+  cloud_firestore: ^3.1.18
+  rxdart: ^0.27.4
+
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/facebook.png
+    - assets/images/google.png
+    - assets/images/TP.png
+    - assets/images/FR515.jpg
+    - assets/images/personIcon.png
+    - assets/images/BrandIcon.png
+    - assets/images/HomeIcon.png
+    - assets/fonts/SourceSansPro-Regular.ttf
+
+
+

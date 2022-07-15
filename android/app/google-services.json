@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "578057048311",
+    "project_id": "alfatech-7a012",
+    "storage_bucket": "alfatech-7a012.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:578057048311:android:9f345296c1c8410a5dc3f2",
+        "android_client_info": {
+          "package_name": "com.example.alfatech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "578057048311-v042lmqqklanuioa893v51d2lvqmnot7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alfatech",
+            "certificate_hash": "f6fa3447c8c774effd46efee029d217120c60e3c"
+          }
+        },
+        {
+          "client_id": "578057048311-tabl5iv23neujlfk7m6edvrapkmedodd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCE8zAUtdfP2YOsvEo4nyr8c8-nG_AsQ9w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "578057048311-tabl5iv23neujlfk7m6edvrapkmedodd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
