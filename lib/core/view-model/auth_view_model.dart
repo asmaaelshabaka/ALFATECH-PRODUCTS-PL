@@ -1,3 +1,6 @@
+import 'dart:ffi';
+
+import 'package:alfatech/helper/local_storage_data.dart';
 import 'package:alfatech/model/user_model.dart';
 import 'package:alfatech/view/Home_View.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,7 +14,6 @@ import 'package:alfatech/core/services/fireStore_user.dart';
 
 import '../../view/Control_View.dart';
 
-
 class AuthViewModel extends GetxController {
   int counter = 0;
   GoogleSignIn _SigninWithGoogle = GoogleSignIn(scopes: ['email']);
@@ -19,14 +21,21 @@ class AuthViewModel extends GetxController {
   FacebookLogin _facebookLogin = FacebookLogin();
   String? Email, Password, Name;
   // Rx<User>=Rx<User>();
-   Rxn<User>  _user=Rxn<User>();
-   String? get user=> _user.value?.email;
+  Rxn<User> _user = Rxn<User>();
+  String? get user => _user.value?.email;
+  final LocalStorageData localStorageData = Get.find();
   @override
   void onInit() {
     // TODO: implement onInit
 
     super.onInit();
     _user.bindStream(_Auth.authStateChanges());
+    if(_Auth.currentUser!=null)
+      {
+
+        getCurrentUserData(_Auth.currentUser!.uid);
+
+      }
   }
 
   @override
@@ -56,8 +65,11 @@ class AuthViewModel extends GetxController {
         idToken: googleSinInAuth?.idToken,
         accessToken: googleSinInAuth?.accessToken);
     UserCredential userCredential =
-        await _Auth.signInWithCredential(credential);
-    print(userCredential.user);
+        await _Auth.signInWithCredential(credential).then((user) {
+      saveUser(user);
+      Get.offAll(ControlView());
+      return user;
+    });
   }
 
   void FacebookSignInMethod() async {
@@ -74,9 +86,15 @@ class AuthViewModel extends GetxController {
 
   void signInWithEmailAndPassword() async {
     try {
-      await _Auth.signInWithEmailAndPassword(
-          email: Email!, password: Password!);
-      Get.offAll(HomeView());
+      await _Auth.signInWithEmailAndPassword(email: Email!, password: Password!)
+          .then((value) async {
+        await FireStoreUser()
+            .getCurrentUser(value.user!.uid.toString())
+            .then((value) {
+          setUser(UserModel.fromJson(value.data() as Map));
+        });
+      });
+      Get.offAll(ControlView());
     } catch (e) {
       Get.snackbar('Error Login Account', e.toString(),
           colorText: Colors.black, snackPosition: SnackPosition.BOTTOM);
@@ -93,7 +111,7 @@ class AuthViewModel extends GetxController {
         saveUser(user);
       });
 
-      Get.offAll(HomeView());
+      Get.offAll(ControlView());
     } catch (e) {
       Get.snackbar('Error Login Account', e.toString(),
           colorText: Colors.black, snackPosition: SnackPosition.BOTTOM);
@@ -102,7 +120,19 @@ class AuthViewModel extends GetxController {
   }
 
   void saveUser(UserCredential user) async {
-    await FireStoreUser().addUsertoFireStore(UserModel(
-        Name: Name, Email: user.user!.email, Pic: '', UserId: user.user!.uid));
+    UserModel userModel = UserModel(
+        Name: Name, Email: user.user!.email, Pic: '', UserId: user.user!.uid);
+    await FireStoreUser().addUsertoFireStore(userModel);
+    setUser(userModel);
+  }
+
+  void setUser(UserModel userModel) async {
+    await localStorageData.setUser(userModel);
+  }
+  void getCurrentUserData(String UID)async
+  {
+    await FireStoreUser().getCurrentUser(UID).then((value) {setUser(UserModel.fromJson(value.data() as Map));});
+
+
   }
 }

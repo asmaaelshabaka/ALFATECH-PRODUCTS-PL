@@ -14,6 +14,7 @@ class ControlView extends GetWidget<AuthViewModel> {
       return (Get.find<AuthViewModel>().user != null)
           ?
            GetBuilder<ControlViewModel>(
+             init: ControlViewModel(),
               builder: (controller) => Scaffold(
                 body: controller.CurrentScreen,
                bottomNavigationBar: bottomNavigationBar(),
@@ -24,7 +25,7 @@ class ControlView extends GetWidget<AuthViewModel> {
 
   Widget bottomNavigationBar() {
     return GetBuilder<ControlViewModel>(
-      init: ControlViewModel(),
+      init: Get.put(ControlViewModel()),
       builder: (controller) => BottomNavigationBar(
         items: [
           BottomNavigationBarItem(

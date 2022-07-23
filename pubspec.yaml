@@ -34,6 +34,9 @@ dependencies:
   flutter_paytabs_bridge: ^2.2.8
   sqflite: ^2.0.3
   path: ^1.8.1
+  shared_preferences: ^2.0.15
+  flutter_svg: ^1.1.1+1
+  status_change: ^2.0.0
 
 
 
@@ -67,6 +70,8 @@ flutter:
     - assets/images/BrandIcon.png
     - assets/images/HomeIcon.png
     - assets/fonts/SourceSansPro-Regular.ttf
+    - assets/images/menu_icons/
+    - assets/images/undraw_empty_cart_co35.svg
 
 
 

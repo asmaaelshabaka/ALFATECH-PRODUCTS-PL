@@ -1,4 +1,5 @@
 import 'package:alfatech/model/CartProduct_model.dart';
+import 'package:alfatech/model/Products_model.dart';
 import 'package:flutter_paytabs_bridge/BaseBillingShippingInfo.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -38,4 +39,14 @@ class CartDataBaseHelper {
         : [];
     return list;
   }
+
+  updateProduct(CartProductModel model)async
+  {
+    var dbClint= await database;
+  return await  dbClint!.update(tableCartProduct, model.toJson(),where:'$CloumnId=?',whereArgs: [model.productId] );
+
+
+
+  }
+
 }

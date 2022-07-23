@@ -1,5 +1,6 @@
 class ProductsModel {
-  String? productId,name, image, description, mainBrand, price;
+  String? productId,name, image, description, mainBrand;
+  String? price;
   ProductsModel(
       this.name, this.image, this.description, this.mainBrand, this.price,this.productId);
   ProductsModel.formJson(Map<dynamic, dynamic> map) {

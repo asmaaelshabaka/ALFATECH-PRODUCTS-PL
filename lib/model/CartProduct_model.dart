@@ -1,8 +1,8 @@
 class CartProductModel {
-  String? name, image, price, productId;
+  String? name, image, productId;
+  String? price;
   int? quantity;
-  CartProductModel(
-      this.name, this.image, this.price, this.quantity, this.productId);
+  CartProductModel(this.name, this.image, this.price, this.quantity, this.productId);
   CartProductModel.formJson(Map<dynamic, dynamic> map) {
     if (map == null) {
       return;

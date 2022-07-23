@@ -10,6 +10,7 @@ import 'Card_View.dart';
 class DetailsView extends StatelessWidget {
   ProductsModel? Model;
   DetailsView({this.Model});
+  CartProductModel? CModel;
 
   @override
   Widget build(BuildContext context) {
