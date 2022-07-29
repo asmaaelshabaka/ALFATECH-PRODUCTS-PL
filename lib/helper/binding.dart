@@ -7,6 +7,7 @@ import 'package:alfatech/view/checkOut/add_addressWidget.dart';
 import 'package:alfatech/view/checkOut/checkOut_View.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import '../core/view-model/CheckOut_View_Model.dart';
 import '../core/view-model/control_view_model.dart';
 import '../core/view-model/home_view_model.dart';
 import '../view/checkOut/delevery_timeWidget.dart';
@@ -28,6 +29,7 @@ class Binding extends Bindings{
     Get.lazyPut(() => CheckOutView());
     Get.lazyPut(() => AddAddress());
     Get.lazyPut(() => DeliveryTime());
+    Get.lazyPut(() => checkOutViewModel());
     //Get.lazyPut(() => Summary());
 
 

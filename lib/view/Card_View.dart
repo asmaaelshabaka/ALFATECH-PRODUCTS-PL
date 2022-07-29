@@ -158,7 +158,7 @@ class CardView extends StatelessWidget {
                           init: CartViewModel(),
                           builder: (controller) => Container(
                                   child: CustomButton('CHECK OUT', () {
-                                    Get.off( CheckOutView());
+                                    Get.to(()=> CheckOutView());
                                   } )))
                     ],
                   ),
